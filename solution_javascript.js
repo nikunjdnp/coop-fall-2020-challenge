@@ -24,10 +24,8 @@ class EventSourcer {
 
   redo() {
     if (this.eventTrack.length > 1) {
-      this.callRedoTime += 1;
+      this.value = this.eventTrack[this.eventTrack.indexOf(this.value) + this.callRedoTime];
     }
-    this.callRedoTime += this.callRedoTime;
-    this.value = this.eventTrack[this.eventTrack.indexOf(this.value) + this.callRedoTime];
   }
 
   bulk_undo(num) {
@@ -35,9 +33,8 @@ class EventSourcer {
   }
 
   bulk_redo(num) {
-    if (this.eventTrack.length > 1) {
-      this.value = this.eventTrack[this.eventTrack.indexOf(this.value) + num];
-    }
+    this.value = this.eventTrack[this.eventTrack.indexOf(this.value) + num];
+
   }
 }
 
